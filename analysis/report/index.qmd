@@ -45,16 +45,16 @@ turned into several hours of debugging.
 The core difficulty is that Observable JS and Shiny
 use fundamentally different execution models.
 Observable runs entirely in the browser;
-Shiny requires a server process. When you add
-`server: shiny` to a Quarto document, the rendering
-context changes in ways that break standard
-Observable data-loading patterns.
+Shiny requires a server process. When `server: shiny`
+is added to a Quarto document, the rendering context
+changes in ways that break standard Observable
+data-loading patterns.
 
-This post documents the journey from naive optimism
-to a working solution. Every data-loading approach I
-tried failed -- `FileAttachment`, `ojs_define`,
-local `d3.csv` -- until I discovered that fetching
-from a public URL bypasses the conflict entirely.
+We document here the journey from naive optimism
+to a working solution. Every data-loading approach
+tried failed: `FileAttachment`, `ojs_define`, and
+local `d3.csv`. Fetching from a public URL was
+ultimately found to bypass the conflict entirely.
 
 ## Motivations
 
@@ -91,9 +91,8 @@ from a public URL bypasses the conflict entirely.
    and Shiny for statisticians evaluating both
    frameworks.
 
-I am documenting my learning process here. If you
-spot errors or have better approaches, please let
-me know.
+This learning process is documented here. Errors
+spotted or better approaches are always welcome.
 
 ![](media/images/quarto-logo.png){.img-fluid width=30% fig-align="center"}
 
@@ -102,7 +101,7 @@ between client-side and server-side reactivity.*
 
 # Prerequisites and Setup
 
-To follow along with this post, you will need:
+To follow along with this post, one will need:
 
 - Quarto (1.3 or later)
 - R with ggplot2 and dplyr packages
@@ -138,8 +137,8 @@ The advantage is access to the full R ecosystem and
 arbitrarily large datasets; the limitation is
 network latency and server resource requirements.
 
-When you combine both in a single Quarto document,
-you are running a Shiny server that also serves
+When both are combined in a single Quarto document,
+one is running a Shiny server that also serves
 Observable JS. This dual context is where the
 data-loading conflicts arise.
 
@@ -147,7 +146,7 @@ data-loading conflicts arise.
 
 ## The Side-by-Side Comparison
 
-Below are two identical visualisations -- one built
+Below are two identical visualisations: one built
 with Observable JS (client-side) and one with Shiny
 (server-side). Both filter the Palmer Penguins
 dataset by bill length and display a histogram of
@@ -307,7 +306,7 @@ data = FileAttachment(
 
 **Result:** `OJS Error: Unable to load file`
 
-**Why:** When you add `server: shiny`, the document
+**Why:** When `server: shiny` is added, the document
 runs as a Shiny application. The Shiny server does
 not know about Observable's file attachment system.
 The file resolution mechanism that works in static
@@ -383,7 +382,7 @@ process.
    separate.
 3. Test incrementally: get Shiny working first, then
    add OJS.
-4. Hard-refresh your browser (Cmd+Shift+R) when
+4. Hard-refresh the browser (Cmd+Shift+R) when
    debugging.
 5. Restart the preview server after major changes.
 
@@ -401,7 +400,7 @@ process.
 
 **Browser caching:** The browser often shows old
 code during debugging. The displayed code might show
-`FileAttachment(...)` even though your file now uses
+`FileAttachment(...)` even though the file now uses
 `fetch()`.
 
 **Solution:** Kill the server, delete generated
@@ -412,13 +411,14 @@ rm -rf yourfile_files yourfile.html
 quarto preview yourfile.qmd
 ```
 
+
 **Port changes:** Every restart may assign a
 different port (5155, 6532, 7665). Check the
 terminal output for the correct URL.
 
 **Misleading error messages:** The error "Did you
-forget to use a render function?" does not mean
-you need `renderSomething()`. It means
+forget to use a render function?" does not indicate
+that `renderSomething()` is needed. It means
 `ojs_define()` does not work with static data in
 the Shiny context.
 
@@ -426,9 +426,9 @@ the Shiny context.
 
 1. **FileAttachment silently fails.** There is no
    helpful error message explaining that the Shiny
-   context disables Observable's file system. You
-   see a generic load error.
-2. **Browser caching masks your fixes.** After
+   context disables Observable's file system. Only
+   a generic load error is shown.
+2. **Browser caching masks fixes.** After
    changing from `FileAttachment` to `fetch`, the
    browser may still display the old code and the
    old error. Hard-refresh every time.
@@ -545,56 +545,60 @@ context disables Observable's standard file-loading
 mechanisms, and the two frameworks cannot reliably
 share data.
 
-What I learnt most from this exploration is that the
-boundary between client-side and server-side
-execution is not merely architectural -- it is a
-hard constraint that determines which approaches
-work and which fail silently. Once I accepted that
-the two frameworks must remain independent, the
-`fetch()` solution became obvious.
+What this exploration revealed is that the boundary
+between client-side and server-side execution is not
+merely architectural: it is a hard constraint that
+determines which approaches work and which fail
+silently. Once it is accepted that the two frameworks
+must remain independent, the `fetch()` solution
+becomes obvious.
 
-For educational purposes -- comparing both
-technologies side-by-side -- this approach is
-valuable once you get past the setup hurdles. For
-production applications, I recommend choosing one
-framework rather than combining both.
+For educational purposes (comparing both
+technologies side-by-side) this approach is valuable
+once the setup hurdles are cleared. For production
+applications, choosing one framework rather than
+combining both is the more prudent path.
 
-Main takeaways:
-
-- `FileAttachment()`, `ojs_define()`, and
-  `d3.csv()` all fail in the Shiny context.
-- `fetch()` from a public URL is the reliable
-  workaround.
-- Keep OJS and Shiny data loading completely
-  independent.
-- Hard-refresh your browser after every change when
-  debugging.
+In conclusion, four points merit emphasis. First,
+`FileAttachment()`, `ojs_define()`, and `d3.csv()`
+all fail in the Shiny context because the Shiny
+server disables Observable's standard file-loading
+mechanisms. Second, fetching from a public URL via
+`fetch()` is the reliable workaround because it
+operates at the HTTP level, independent of both
+frameworks' internal resolution mechanisms. Third,
+OJS and Shiny data loading must be kept completely
+independent; there is no reliable bridge between
+the two contexts. Fourth, a hard browser refresh
+after every change is essential during debugging,
+as caching can mask fixes and waste substantial
+time.
 
 # See Also
 
 **Related posts:**
 
 - [Prototyping a Shiny App with ChatGPT](
-  ../36-simpleshinyappwithchatgpt/) --
+  ../36-simpleshinyappwithchatgpt/):
   Building a Shiny app iteratively with AI
   assistance
 
 **Key resources:**
 
 - [Quarto OJS Documentation](
-  https://quarto.org/docs/interactive/ojs/) --
+  https://quarto.org/docs/interactive/ojs/):
   Official Observable JS integration guide
 - [Quarto Shiny Documentation](
-  https://quarto.org/docs/interactive/shiny/) --
+  https://quarto.org/docs/interactive/shiny/):
   Official Shiny integration guide
 - [Observable Plot](
-  https://observablehq.com/plot/) --
+  https://observablehq.com/plot/):
   The plotting library used in the OJS examples
 - [Palmer Penguins Dataset](
-  https://allisonhorst.github.io/palmerpenguins/) --
+  https://allisonhorst.github.io/palmerpenguins/):
   The dataset used in both frameworks
 - [D3.js: Data-Driven Documents](
-  https://d3js.org/) --
+  https://d3js.org/):
   The JavaScript library underlying Observable Plot
 
 # Reproducibility
@@ -620,9 +624,9 @@ from a local CSV file at
 
 ```
 shinyvsobservable/
-  analysis/report/index.qmd  -- This post
-  data/raw_data/              -- Penguins CSV
-  analysis/media/images/      -- Hero, ambiance
+  analysis/report/index.qmd  (this post)
+  data/raw_data/              (penguins CSV)
+  analysis/media/images/      (hero, ambiance)
 ```
 
 ```{r}
@@ -643,14 +647,12 @@ sessionInfo()
 - **Email:**
   [rgtlab.org/contact](https://rgtlab.org/contact)
 
-I would enjoy hearing from you if:
+I would enjoy hearing from readers who:
 
-- You spot an error or a better approach to any of
+- Spot an error or a better approach to any of
   the code in this post.
-- You have suggestions for topics you would like to
-  see covered.
-- You want to discuss R programming, data science,
+- Have suggestions for topics to cover.
+- Want to discuss R programming, data science,
   or reproducible research.
-- You have questions about anything in this
-  tutorial.
-- You just want to say hello and connect.
+- Have questions about anything in this tutorial.
+- Simply want to say hello and connect.
