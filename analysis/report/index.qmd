@@ -22,6 +22,8 @@ format:
     code-tools: false
     resources:
       - data/raw_data/palmer-penguins.csv
+cluster: shiny
+cluster-order: 1
 ---
 
 ![A split screen showing two reactive frameworks
@@ -656,3 +658,12 @@ I would enjoy hearing from readers who:
   or reproducible research.
 - Have questions about anything in this tutorial.
 - Simply want to say hello and connect.
+
+## Related posts in this cluster
+
+This post is part of the *Shiny and Interactive Visualization* series.
+Recommended reading order:
+
+1. **Post 90: Combining Observable JS and Shiny in a Quarto Document** (this post)
+2. Post 91: [Prototyping a Shiny App with ChatGPT](../91-shy-prototype-with-chatgpt/)
+
