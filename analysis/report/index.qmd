@@ -9,7 +9,7 @@ description: >
   to combine Observable JS and Shiny in one Quarto
   document until every data-loading approach I tried
   failed except fetching from a public URL.
-image: "media/images/hero.jpg"
+image: "media/images/hero.png"
 document-type: "blog"
 draft: false
 execute:
@@ -28,7 +28,7 @@ cluster-order: 1
 
 ![A split screen showing two reactive frameworks
 working side by side in a single
-document](media/images/hero.jpg){.img-fluid
+document](media/images/hero.png){.img-fluid
 width=80% fig-align="center"}
 
 *Combining two reactive frameworks in one document
