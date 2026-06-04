@@ -11,7 +11,7 @@ description: >
   failed except fetching from a public URL.
 image: "media/images/hero.png"
 document-type: "blog"
-draft: false
+draft: true
 execute:
   echo: true
   warning: false
@@ -282,7 +282,7 @@ output$count_shiny <- renderText({
 
 ![A debugging session with multiple terminal
 windows open and documentation
-visible](media/images/ambiance2.jpg){.img-fluid}
+visible](media/images/ambiance2.png){.img-fluid}
 
 *Debugging reactive framework conflicts requires
 patience and systematic elimination.*
@@ -446,7 +446,7 @@ the Shiny context.
 
 ![A whiteboard with architectural diagrams
 comparing client-server
-models](media/images/ambiance3.jpg){.img-fluid}
+models](media/images/ambiance3.png){.img-fluid}
 
 *Understanding the architectural boundary between
 client-side and server-side is the key insight.*
