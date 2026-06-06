@@ -1,0 +1,30 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Motivations}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Objectives}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Prerequisites and Setup}{3}{section.2}%
+\contentsline {section}{\numberline {3}What is Client-Side versus Server-Side Reactivity?}{4}{section.3}%
+\contentsline {section}{\numberline {4}Getting Started}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Side-by-Side Comparison}{4}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Observable JS}{4}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Shiny}{5}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Key Syntax Differences}{6}{subsection.4.2}%
+\contentsline {section}{\numberline {5}The Challenges}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Challenge 1: FileAttachment Does Not Work}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Challenge 2: ojs\_define Fails Too}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Challenge 3: Local d3.csv Returns 404}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}The Solution: Fetch from a Public URL}{8}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Dos and Don'ts}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Additional Gotchas}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Things to Watch Out For}{9}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Lessons Learnt}{10}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Conceptual Understanding}{10}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Technical Skills}{10}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Gotchas and Pitfalls}{10}{subsubsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.4}Limitations}{11}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Opportunities for Improvement}{11}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Wrapping Up}{11}{section.7}%
+\contentsline {section}{\numberline {8}See Also}{12}{section.8}%
+\contentsline {section}{\numberline {9}Reproducibility}{12}{section.9}%
+\contentsline {section}{\numberline {10}Let's Connect}{13}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Related posts in this cluster}{13}{subsection.10.1}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
