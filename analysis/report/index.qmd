@@ -1,7 +1,7 @@
 ---
 title: "Combining Observable JS and Shiny in a
   Single Quarto Document"
-author: "Ronald 'Ryy' G. Thomas"
+author: "Ronald G. Thomas"
 date: "2025-12-01"
 categories: [quarto, shiny, javascript, r, data-visualization]
 description: >
