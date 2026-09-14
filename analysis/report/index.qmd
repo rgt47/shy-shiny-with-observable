@@ -3,7 +3,7 @@ title: "Combining Observable JS and Shiny in a Single Quarto Document"
 author: "Ronald G. Thomas"
 date: "2025-12-01"
 categories: [quarto, shiny, javascript, r, data-visualization]
-description: "I did not really know how difficult it would be to combine Observable JS and Shiny in one Quarto document until every data-loading approach I tried failed except fetching from a public URL."
+description: "Combining Observable JS and Shiny in one Quarto document is harder than it looks: every data-loading approach I tried failed except fetching from a public URL."
 image: "media/images/hero.png"
 document-type: "blog"
 draft: false
@@ -29,10 +29,10 @@ is harder than it looks.*
 
 # Introduction
 
-I did not really know how difficult it would be to
-combine Observable JS and Shiny in a single Quarto
-document until I tried to create a side-by-side
-comparison. Like many statisticians, I assumed that
+Combining Observable JS and Shiny in a single Quarto
+document is considerably harder than it looks, as a
+side-by-side comparison quickly demonstrates. Like
+many statisticians, I assumed that
 since Quarto supports both frameworks, mixing them
 would be straightforward. Thirty minutes of setup
 turned into several hours of debugging.
