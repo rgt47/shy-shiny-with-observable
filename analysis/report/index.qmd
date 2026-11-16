@@ -91,9 +91,6 @@ spotted or better approaches are always welcome.
 
 ![A sheet of tracing paper laid over a printed diagram, revealing a second, complementary drawing sketched on top: one document layer combining two different tools.](media/images/ambiance1.jpg){.img-fluid height=3.5in}
 
-*Understanding the architectural differences
-between client-side and server-side reactivity.*
-
 # Prerequisites and Setup
 
 To follow along with this post, one will need:
@@ -278,9 +275,6 @@ pencil, writing on the same open page from opposite
 corners: two languages contributing to one
 document](media/images/ambiance2.jpg){.img-fluid height=3.5in}
 
-*Debugging reactive framework conflicts requires
-patience and systematic elimination.*
-
 # The Challenges
 
 Getting the side-by-side comparison working was
@@ -440,10 +434,7 @@ the Shiny context.
 
 ![A whiteboard with architectural diagrams
 comparing client-server
-models](media/images/ambiance3.png){.img-fluid height=3.5in}
-
-*Understanding the architectural boundary between
-client-side and server-side is the key insight.*
+models](media/images/ambiance3.jpg){.img-fluid height=3.5in}
 
 ## Lessons Learned
 
